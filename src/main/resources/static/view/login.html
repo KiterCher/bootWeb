@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    <style>
+        .admin{
+            width: 100%;
+            text-align: center;
+        }
+        .input-name{
+            width: 100px;
+        }
+        .input-password{
+            width: 100px;
+        }
+        .login{
+
+        }
+    </style>
+
+    <script typet="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div class="admin">
+        <div>
+           <input type="text" maxlength="10" class="input-name" id="name">
+        </div>
+        <div>
+            <input type="password" maxlength="10" class="input-name" id="password">
+        </div>
+        <div class="login">
+            <button onclick="login()">登陆</button>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    function login() {
+
+        var ctxPath = /*[[@{/}]]*/ '';
+
+
+        var name = $("#name").val();
+        var password = $("#password").val();
+
+        var url = `http://localhost:8078/api/test/login`
+
+        var obj = {
+            name : name,
+            password : password
+        }
+        $.ajax({
+            url: url,
+            data: obj,
+            type: "GET",
+            success: function (data) {
+                alert(data.message);
+            },
+            dataType: "json"
+        });
+    }
+
+</script>
+</html>
